@@ -2,7 +2,7 @@ import React from "react";
 import "./Main.css";
 import AppContext from "../../AppContext";
 import config from "../../config";
-import { NavLink } from "react-router-dom";
+import Note from '../Note/Note';
 import { Link } from "react-router-dom";
 // import { findByLabelText } from "@testing-library/react";
 
@@ -27,27 +27,34 @@ export default class Main extends React.Component {
       <>
         <div
           className="conTainer"
-      
-        >
+          >
           <div
             className="main-notebox">
+          
             <ul>
               {this.context.notes
                 ? this.context.notes.map((note) => (
-                    <li
-                      className="main-note-list"
-                      key={note.id}
-                      style={{ fontSize: "14px", listStyle: "none" }}
-                    >
-                      <NavLink className='notelink'to={`/note/${note.id}`}>{note.name}</NavLink>
-                      <p>{note.modified}</p>
-                      <button
-                        style={{ fontSize: "10px" }}
-                        onClick={() => this.handleDelete(note.id)}
-                      >
-                        remove
-                      </button>
-                    </li>
+                  <Note
+                    key={note.id}
+                    id={note.id}
+                    modified={note.modified}
+                    name={note.name}
+                  />
+             
+                    // <li
+                    //   className="main-note-list"
+                    //   key={note.id}
+                    //   style={{ fontSize: "14px", listStyle: "none" }}
+                    // >
+                    //   <NavLink className='notelink'to={`/note/${note.id}`}>{note.name}</NavLink>
+                    //   <p>{note.modified}</p>
+                    //   <button
+                    //     style={{ fontSize: "10px" }}
+                    //     onClick={() => this.handleDelete(note.id)}
+                    //   >
+                    //     remove
+                    //   </button>
+                    // </li> */}
                   ))
                 : null}
             </ul>

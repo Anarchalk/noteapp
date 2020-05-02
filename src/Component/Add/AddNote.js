@@ -7,7 +7,7 @@ export default class AddNote extends Component {
   state = {
     noteName: "",
     contName: "",
-    folderId: "",
+    folder_id: "",
   };
 
   handleInputChange = (e) => {
@@ -18,7 +18,14 @@ export default class AddNote extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(
+      {
+        name: this.state.noteName,
+        content: this.state.contName,
+        folder_id: this.state.folder_id,
+        modified: new Date(),
+      }
+    )
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
       headers: {
@@ -27,7 +34,7 @@ export default class AddNote extends Component {
       body: JSON.stringify({
         name: this.state.noteName,
         content: this.state.contName,
-        folderId: this.state.folderId,
+        folder_id: this.state.folder_id,
         modified: new Date(),
       }),
     })
@@ -45,7 +52,6 @@ export default class AddNote extends Component {
   };
 
   render() {
-    // console.log(this.context.folders)
     return (
       <>
         <div
@@ -83,8 +89,8 @@ export default class AddNote extends Component {
               <br />
               <select
                 onChange={(e) => this.handleInputChange(e)}
-                name="folderId"
-                value={this.state.folderId}
+                name="folder_id"
+                value={this.state.folder_id}
               >
                 <option>--</option>
                 {this.context.folders.map((folder) => (

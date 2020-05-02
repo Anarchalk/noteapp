@@ -1,4 +1,4 @@
-.NoteSidebar {
+.NoteSidebar  {
     color: #b5b3b3;
     font-family: var(--custom-font);
     font-size: 30px;
@@ -9,6 +9,14 @@
     writing-mode: vertical-lr;
     background-color: #0b1b32 ;
 }
+
+/* .NoteSidebar {
+  background-color: #0b1b32;
+  color: #fff;
+  grid-area: sidebar;
+  height: 100vh;
+  overflow: auto;
+} */
 /* {width: 75px;
 writing-mode: vertical-lr;} */
 
@@ -20,15 +28,22 @@ writing-mode: vertical-lr;} */
         background-color: #FFB72F;
       } */
 }
-.note {
+/* .note {
    
-        background-color: #efefef;
+        background-color: #2e2e55;
         height: 100%;
         padding: 10px;
         width: 100%;
   
- 
-        color: #3a3939;
         max-width: 380px;
 
+} */
+
+.note{
+  background-color: #102541;
+  grid-area: main;
+  overflow: auto;
+  color:#fff;
 }
+
+/* height: calc(100vh - 120px); */

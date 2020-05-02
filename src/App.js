@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Main from "./Component/Main/Main";
-import Note from "./Component/Note/Note";
+import NoteDetails from "./Component/Note/NoteDetails";
 import Header from "./Component/Header";
 import FolderMain from "./Component/Folder/FolderMain";
 import Sidebar from "./Component/Main/Sidebar";
@@ -75,7 +75,6 @@ export default class App extends Component {
             <Switch>
               <Route path="/" component={Header} />
             </Switch>
-          
             <Switch>
               <Route
                 exact
@@ -89,16 +88,14 @@ export default class App extends Component {
                 //   />
                 // )}
               />
-              
             </Switch>
-          
             <Switch>
               <Route exact path="/" component={Main} />
             </Switch>
             <Route path="/folder/:folderId" component={Sidebar} />
             <Route exact path="/folder/:folderId" component={FolderMain} />
             <Route exact path="/note/:noteId" component={NoteSidebar} />
-            <Route exact path="/note/:noteId" component={Note} />
+            <Route exact path="/note/:noteId" component={NoteDetails} />
             <Route exact path="/add-folder" component={backButton} />
             <Route exact path="/add-folder" component={AddFolder} />
             <Route exact path="/add-note" component={backButton} />
