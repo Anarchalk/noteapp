@@ -7,25 +7,23 @@ export default function Sidebar() {
   return (
     <AppContext.Consumer>
       {({ folders }) => (
-        <div
-          className="main-folderbox"
-        >
-          <ul>
+        <>
+          <ul className='folder_list_nav'>
             {{ folders }
               ? folders.map((folder) => (
                   <li key={folder.id}>
-                    <Link style={{color:'#fff'}} to={`/folder/${folder.id}`}>{folder.name}</Link>
+                    <Link className='folder_nav_link' to={`/folder/${folder.id}`}>{folder.name}</Link>
                   </li>
                 ))
               : null}
           </ul>
 
           <button>
-            <Link style={{ textDecoration: "none" }} to={"/add-folder"}>
+            <Link className='add_folder_link' style={{color:'black', textDecoration:'none'}} to={"/add-folder"}>
               + folder
             </Link>
           </button>
-        </div>
+        </>
       )}
     </AppContext.Consumer>
   );

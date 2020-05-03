@@ -1,3 +1,4 @@
+  
 import React, { Component } from "react";
 import AppContext from "../../AppContext";
 import './notesidebar.css'
@@ -11,23 +12,18 @@ export default class NoteSidebar extends Component {
 
   render() {
     const { noteId } = this.props.match.params;
-    const note = this.context.notes.find((note) => note.id === parseInt(noteId));
+    const note = this.context.notes.find((note) => {
+      return note.id === parseInt(noteId)
+    });
     const folder = note
-      ? this.context.folders.find((folder) => folder.id === note.folder_id)
+      ? this.context.folders.find((folder) => {
+        return folder.id === note.folder_id
+      })
       : null;
 
     return (
       <>
-        <div
-          className = "NoteSidebar"
-          // style={{
-          //   backgroundColor: "#D1f7C9",
-          //   width: "30%",
-          //   height: "40",
-          //   justifyContent: "center",
-          //   alignItems: "center",
-          // }}
-        >
+        <div className = "NoteSidebar">
           {folder && <h2>{folder.name}</h2>}
           <button className='NoteSidebar_backbutton' onClick={() => this.handleClick(folder.id)} type="submit">
             back

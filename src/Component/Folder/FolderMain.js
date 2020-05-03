@@ -1,23 +1,29 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import AppContext from "../../AppContext";
-import './FolderMain.css'
 import Note from '../Note/Note'
+import './FolderMain.css'
 
 export default class FolderMain extends Component {
   static contextType = AppContext;
 
+  onDelete = () => {
+    this.props.history.push("/");
+  }
+
   render() {
-   // const noteId = this.props.match.params.noteId;
-    const folder_id = this.props.match.params.folderId;
-    // console.log(folderId)
-    const notes = this.context.notes.filter(
-      (note) => note.folder_id === folder_id
-    );
+    const folderId = this.props.match.params.folderId;
+
+    const notes = this.context.notes.filter((note) => {
+      return note.folder_id === folderId
+    });
     return (
       <>
         <div className="FolderMain">
-        <ul>
+        <button>
+          <Link to={"/add-note"} style={{color:'black'}}>Add note</Link>
+        </button>
+          <ul>
             {notes
               ? notes.map((note) => (
                 <Note
@@ -25,14 +31,12 @@ export default class FolderMain extends Component {
                     id={note.id}
                     modified={note.modified}
                     name={note.name}
+                    onDelete={this.onDelete}
                   />
                 ))
               : null}
           </ul>
         </div>
-        <button >
-          <Link to={"/add-note"}>Add note</Link>
-        </button>
       </>
     );
   }

@@ -1,40 +1,42 @@
 li {
     list-style: none;
 }
-
-.main-folderbox {
-    background-color: #0b1b32;
-    color: #fff;
-    font-size: large;
-    grid-area: sidebar;
-    height: 100vh;
-    overflow: auto;
-    line-height: 2rem;
-    height: 100%;
-    padding: 10px;
-    width: 100%
-  }
-
- .conTainer {
-    background-color: #102541;
-    grid-area: main;
-    height: calc(100vh - 120px);
-    overflow: auto;
-    color:whitesmoke
-  }
   
   .notelink {
-      color: whitesmoke;
+      color: black;
       text-decoration: none;
   }
-  .NotePageMain {
-    background-color: #efefef;
-    height: 100%;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  .NotePageMain__content {
-    color: #3a3939;
-    max-width: 380px;
-  }
+
+.folder_list_nav{
+  /* list-style-type: none; */
+  margin: 130px 0 0;
+  padding: 0;
+}
+
+.folder_nav_link {
+  display: block;
+  font-family: var(--custom-font);
+  font-size: 18px;
+  margin: 0 0 8px auto;
+  max-width: 180px;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.folder_nav_link:hover {
+  /* color: #FFB72F; */
+  cursor: pointer;
+}
+.folder_nav_link.active {
+  background-color: #102541;
+}
+
+.add_folder_link:hover{
+  /* color: rgb(206, 143, 25); */
+  cursor: pointer;
+}
+.add_folder_link.active{
+  background-color: #102541;
+}
+
+

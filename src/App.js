@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Main from "./Component/Main/Main";
-import NoteDetails from "./Component/Note/NoteDetails";
 import Header from "./Component/Header";
 import FolderMain from "./Component/Folder/FolderMain";
 import Sidebar from "./Component/Main/Sidebar";
@@ -11,6 +10,8 @@ import AppContext from "./AppContext";
 import AddFolder from "./Component/Add/AddFolder";
 import backButton from "./backButton";
 import AddNote from "./Component/Add/AddNote";
+import NoteDetails from "./Component/Note/NoteDetails"
+import './App.css'
 
 export default class App extends Component {
   static contextType = AppContext;
@@ -70,39 +71,42 @@ export default class App extends Component {
 
     return (
       <AppContext.Provider value={value}>
-        <>
-          <div className="App">
+      <>
+        <div className="App">
+          <header className="App__header">
             <Switch>
               <Route path="/" component={Header} />
             </Switch>
+          </header>
+          <nav className="App__nav">
             <Switch>
               <Route
                 exact
                 path="/"
                 component={Sidebar}
-                // render={(props) => (
-                //   <Sidebar
-                //     {...props}
-                //     folders={this.state.folders}
-                //     notes={this.state.notes}
-                //   />
-                // )}
               />
             </Switch>
+            <Route path="/folder/:folderId" component={Sidebar} />
+            <Route exact path="/note/:noteId" component={NoteSidebar} />
+            <Route exact path="/add-note" component={backButton} />
+            <Route exact path="/add-folder" component={backButton} />
+          </nav>
+          <main className="App__main">
             <Switch>
               <Route exact path="/" component={Main} />
             </Switch>
-            <Route path="/folder/:folderId" component={Sidebar} />
+            
             <Route exact path="/folder/:folderId" component={FolderMain} />
-            <Route exact path="/note/:noteId" component={NoteSidebar} />
+            
             <Route exact path="/note/:noteId" component={NoteDetails} />
-            <Route exact path="/add-folder" component={backButton} />
+            
             <Route exact path="/add-folder" component={AddFolder} />
-            <Route exact path="/add-note" component={backButton} />
+            
             <Route exact path="/add-note" component={AddNote} />
-          </div>
-        </>
-      </AppContext.Provider>
+          </main>
+        </div>
+      </>
+    </AppContext.Provider>
     );
   }
 }
